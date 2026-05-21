@@ -1,0 +1,34 @@
+package com.example.randomexperience.web.controller;
+
+import com.example.randomexperience.model.User;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+    @GetMapping("/")
+    public String root(HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        return "redirect:/recommendations/all";
+    }
+
+    @GetMapping("/home")
+    public String home(HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        return "home";
+    }
+}

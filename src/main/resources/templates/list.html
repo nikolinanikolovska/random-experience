@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Browse Activities</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>Browse Experiences 🎬</h1>
+    <p>Discover activities by category</p>
+  </div>
+
+  <!-- CATEGORY SECTION -->
+
+  <div class="grid">
+
+    <a href="/recommendations/category/SPORT" class="category-link">
+
+      <div class="card category-card">
+
+        <h3>⚽ Sport</h3>
+
+
+
+        <span class="badge">Energy</span>
+        <span class="badge">Outdoor</span>
+
+      </div>
+
+    </a>
+
+    <a href="/recommendations/category/RELAX" class="category-link">
+
+      <div class="card category-card">
+
+        <h3>🧘 Relax</h3>
+
+
+
+        <span class="badge">Calm</span>
+        <span class="badge">Wellness</span>
+
+      </div>
+
+    </a>
+
+    <a href="/recommendations/category/ENTERTAINMENT" class="category-link">
+
+      <div class="card category-card">
+
+        <h3>🎮 Entertainment</h3>
+
+
+        <span class="badge">Fun</span>
+        <span class="badge">Social</span>
+
+      </div>
+
+    </a>
+
+  </div>
+
+  <!-- ACTIVITIES -->
+
+  <div class="hero">
+    <h2>All Activities</h2>
+  </div>
+
+  <div class="grid">
+
+    <div th:each="a : ${activities}" class="card">
+
+      <div style="position:absolute; top:10px; right:10px;">
+
+        <a th:if="${favoriteIds == null or !favoriteIds.contains(a.id)}"
+           th:href="@{'/favorites/toggle/' + ${a.id}}">
+
+          <button class="favorite-btn">🤍</button>
+
+        </a>
+
+        <button th:if="${favoriteIds != null and favoriteIds.contains(a.id)}"
+                class="favorite-btn favorite-active">
+
+          ❤️
+
+        </button>
+
+      </div>
+
+      <h3 th:text="${a.name}"></h3>
+
+      <p th:text="${a.description}"></p>
+
+      <div style="margin-top:10px;">
+
+        <span class="badge" th:text="${a.category}"></span>
+
+        <span class="badge" th:text="${a.locationType}"></span>
+
+      </div>
+
+      <p>💰 <b th:text="${a.cost}"></b> €</p>
+
+      <p>⏱ <b th:text="${a.durationMinutes}"></b> min</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

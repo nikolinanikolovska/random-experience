@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Find your next experience 🎯</h1>
+    <p>Discover personalized activities based on your mood, time and budget.</p>
+  </div>
+
+  <!-- RECOMMENDATION FORM -->
+  <div class="card">
+
+    <h2>Get Recommendations</h2>
+
+    <form action="/recommendations/recommend" method="post">
+
+      <label>Location Type</label>
+      <select name="locationType">
+        <option value="">Any</option>
+        <option value="INDOOR">Indoor</option>
+        <option value="OUTDOOR">Outdoor</option>
+      </select>
+
+      <label>Category</label>
+      <select name="category">
+        <option value="">Any</option>
+        <option value="SPORT">Sport</option>
+        <option value="RELAX">Relax</option>
+        <option value="ENTERTAINMENT">Entertainment</option>
+      </select>
+
+      <label>Max Budget (€)</label>
+      <input type="number" name="maxBudget" placeholder="e.g. 10">
+
+      <label>Max Duration</label>
+      <input type="number" name="maxDuration" placeholder="e.g. 120">
+
+      <button type="submit">Find Activities</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+</body>
+</html>

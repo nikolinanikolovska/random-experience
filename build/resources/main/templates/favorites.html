@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Favorites</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+
+        <h1>❤️ My Favorites</h1>
+
+        <p>
+            Your personal collection of saved experiences.
+        </p>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div th:if="${#lists.isEmpty(favorites)}"
+         class="card empty-state">
+
+        <h2>😢 No favorites yet</h2>
+
+        <p>
+            Start exploring activities and save the ones
+            you would love to try later.
+        </p>
+
+        <a href="/recommendations/all"
+           class="primary-link-btn">
+
+            🎬 Browse Activities
+
+        </a>
+
+    </div>
+
+    <!-- FAVORITES GRID -->
+    <div class="grid">
+
+        <div th:each="f : ${favorites}"
+             class="card cinematic-card">
+
+            <!-- TOP ROW -->
+            <div class="card-top-actions">
+
+                <span class="trending-pill">
+                    ❤️ Saved
+                </span>
+
+            </div>
+
+            <!-- CONTENT -->
+            <h3 th:text="${f.activity.name}"></h3>
+
+            <p th:text="${f.activity.description}"></p>
+
+            <!-- TAGS -->
+            <div class="badge-row">
+
+                <span class="badge"
+                      th:text="${f.activity.category}">
+                </span>
+
+                <span class="badge"
+                      th:text="${f.activity.locationType}">
+                </span>
+
+            </div>
+
+            <!-- STATS -->
+            <div class="activity-stats">
+
+                <div class="stat">
+                    💰
+                    <span th:text="${f.activity.cost}"></span>
+                    €
+                </div>
+
+                <div class="stat">
+                    ⏱
+                    <span th:text="${f.activity.durationMinutes}"></span>
+                    min
+                </div>
+
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+                <a th:href="@{'/favorites/remove/' + ${f.id}}"
+                   class="remove-btn">
+
+                    ❌ Remove from Favorites
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

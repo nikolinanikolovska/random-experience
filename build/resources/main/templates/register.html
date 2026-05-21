@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- CONTENT -->
+<div class="container auth-page">
+
+    <div class="auth-card">
+
+        <!-- HERO -->
+        <div class="hero auth-hero">
+
+            <h1>Join Random Experience ✨</h1>
+
+            <p>
+                Create an account to save favorites,
+                unlock recommendations and personalize your feed.
+            </p>
+
+        </div>
+
+        <!-- FORM -->
+        <form method="post"
+              action="/register"
+              class="auth-form">
+
+            <label>Username</label>
+
+            <input
+                    type="text"
+                    name="username"
+                    placeholder="Choose a username"
+                    required
+            >
+
+            <label>Password</label>
+
+            <input
+                    type="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+            >
+
+            <!-- ERROR -->
+            <p th:if="${error}"
+               th:text="${error}"
+               class="error-text">
+            </p>
+
+            <!-- BUTTON -->
+            <button type="submit"
+                    class="primary-btn auth-submit-btn">
+
+                🚀 Create Account
+
+            </button>
+
+        </form>
+
+        <!-- FOOTER -->
+        <div class="auth-footer">
+
+            <p>
+                Already have an account?
+            </p>
+
+            <a href="/login"
+               class="primary-link-btn">
+
+                🔐 Login here
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

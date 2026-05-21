@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Activity</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+
+        <h1>Create New Experience ✨</h1>
+
+        <p>
+            Add exciting activities for users to explore,
+            save and enjoy.
+        </p>
+
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="card cinematic-form">
+
+        <div class="section-title">
+
+            <h2>🎬 Activity Details</h2>
+
+            <p>
+                Fill in the information below to publish
+                a new experience.
+            </p>
+
+        </div>
+
+        <form action="/recommendations/save" method="post">
+
+            <!-- NAME -->
+            <label>Activity Name</label>
+
+            <input
+                    type="text"
+                    name="name"
+                    placeholder="e.g. Cinema Night"
+                    required
+            >
+
+            <!-- DESCRIPTION -->
+            <label>Description</label>
+
+            <input
+                    type="text"
+                    name="description"
+                    placeholder="Short description about the experience"
+                    required
+            >
+
+            <!-- TWO COLUMN ROW -->
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Cost (€)</label>
+
+                    <input
+                            type="number"
+                            name="cost"
+                            placeholder="e.g. 10"
+                            required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Duration (minutes)</label>
+
+                    <input
+                            type="number"
+                            name="durationMinutes"
+                            placeholder="e.g. 120"
+                            required
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- SECOND ROW -->
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Location Type</label>
+
+                    <select name="locationType">
+
+                        <option value="INDOOR">
+                            Indoor
+                        </option>
+
+                        <option value="OUTDOOR">
+                            Outdoor
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <select name="category">
+
+                        <option value="SPORT">
+                            Sport
+                        </option>
+
+                        <option value="RELAX">
+                            Relax
+                        </option>
+
+                        <option value="ENTERTAINMENT">
+                            Entertainment
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- SUBMIT -->
+            <button type="submit"
+                    class="primary-btn">
+
+                🚀 Publish Activity
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
